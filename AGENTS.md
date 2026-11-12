@@ -1,7 +1,9 @@
 # AGENTS.md — Super Renewable Hero Game
 
-> **Last updated:** 2026-11-12  
-> **Status:** Pre-release / Active Development
+> **Last updated:** 2026-11-13  
+> **Status:** Active Development / Live on GitHub Pages  
+> **Live Demo:** [https://pranay-code.github.io/SuperRenewableHeroGame/](https://pranay-code.github.io/SuperRenewableHeroGame/)  
+> **Repository:** [https://github.com/pranay-code/SuperRenewableHeroGame](https://github.com/pranay-code/SuperRenewableHeroGame)
 
 ---
 
@@ -25,6 +27,7 @@ The game is educational and experiential — it teaches renewable energy dispatc
 | **Language** | JavaScript (JSX) | ES Modules |
 | **Styling** | Vanilla CSS (design tokens, glass-morphism) | — |
 | **Linting** | ESLint 9 + react-hooks + react-refresh plugins | — |
+| **CI/CD & Hosting** | GitHub Pages + GitHub Actions | — |
 | **Platform** | Desktop browsers only (min 1024px) | — |
 
 ---
@@ -32,6 +35,9 @@ The game is educational and experiential — it teaches renewable energy dispatc
 ## 📁 Architecture Overview
 
 ```
+.github/
+└── workflows/
+    └── deploy.yml             # GitHub Actions CI/CD to GitHub Pages
 src/
 ├── App.jsx                    # State machine controller (6 states)
 ├── main.jsx                   # React entry point
@@ -124,6 +130,7 @@ INTRO → BESS_SELECTION → PERMISSION_GATE → CALIBRATION → PLAYING → EVA
 | CSS design system | ✅ Complete | Light nature theme, ~1880 lines |
 | Build | ✅ Passes | Vite build succeeds with zero CSS warnings |
 | Linting | ✅ Clean | ESLint 9 passes with 0 errors and 0 warnings |
+| CI/CD & Deployment | ✅ Live | Automated build & deploy to GitHub Pages on push to `main` |
 | Mobile gate | ✅ Complete | Blocks mobile devices |
 | Tests | ❌ None | No unit or integration tests exist |
 | TypeScript | ❌ Not used | Plain JS/JSX throughout |
@@ -149,6 +156,7 @@ INTRO → BESS_SELECTION → PERMISSION_GATE → CALIBRATION → PLAYING → EVA
 - **Dead code removal:** Deleted unreferenced `WindParticleLayer.js`, unused `createSoftShadowTexture` in `TextureCache.js`, unused `desaturate` in `ColorUtils.js`, and empty `src/assets` folder.
 - **Stale closure & unused params:** Fixed `stopLoops` ordering and dependency array in `useGameLoops.js`, eliminated unused `canvasRef`, `isPlaying`, `fullStream`, and unneeded error bindings.
 - **ESLint hygiene:** All rules pass with zero errors and zero warnings.
+- **GitHub Pages deployment:** Configured Vite subpath routing (`base: '/SuperRenewableHeroGame/'`) and automated CI/CD pipeline via GitHub Actions.
 
 ---
 
